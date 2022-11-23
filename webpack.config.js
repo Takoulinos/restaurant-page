@@ -22,10 +22,25 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: ''
   },
+  module: {
+    rules: [
+        {
+            test: /\.(png|jpg|webp)$/,
+            type: 'asset/resource',
+        },
+        {
+            test: /\.css$/,
+            use: [
+                'style-loader', 'css-loader'
+            ]
+
+        }
+    ]
+  },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-        filename: 'index.html'
+        title: 'Restaurant Page'
     })
   ]
 };
